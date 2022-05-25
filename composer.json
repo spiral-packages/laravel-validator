@@ -1,6 +1,6 @@
 {
     "name": "spiral-packages/laravel-validator",
-    "description": "This is my package laravel-validator",
+    "description": "Laravel validator bridge for Spiral Framework",
     "keywords": [
         "spiral-packages",
         "spiral",
