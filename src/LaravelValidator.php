@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Bootloader\Laravel;
+namespace Spiral\Validation\Laravel;
 
 use Illuminate\Contracts\Validation\Factory;
 use Illuminate\Contracts\Validation\Validator;
@@ -53,11 +53,7 @@ class LaravelValidator implements ValidatorInterface
 
     public function hasValue(string $field): bool
     {
-        if (\is_array($this->data)) {
-            return \array_key_exists($field, $this->data);
-        }
-
-        return isset($this->data[$field]);
+        return \array_key_exists($field, $this->data);
     }
 
     public function withContext(mixed $context): ValidatorInterface

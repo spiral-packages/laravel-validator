@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Spiral\Validation\Laravel;
 
 use Illuminate\Contracts\Validation\Factory;
+use Spiral\Filters\Filter;
 use Spiral\Validation\ValidationInterface;
 use Spiral\Validation\ValidatorInterface;
 
@@ -17,8 +18,8 @@ class LaravelValidation implements ValidationInterface
 
     public function validate(mixed $data, array $rules, mixed $context = null): ValidatorInterface
     {
-        if ($data instanceof \ArrayAccess) {
-            $data = $data->toArray();
+        if ($data instanceof Filter) {
+            $data = $data->getData();
         }
 
         $validator = new LaravelValidator(

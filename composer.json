@@ -1,63 +1,64 @@
 {
-  "name": "spiral-packages/laravel-validator",
-  "description": "This is my package laravel-validator",
-  "keywords": [
-    "spiral-packages",
-    "spiral",
-    "laravel-validator"
-  ],
-  "homepage": "https://github.com/spiral-packages/laravel-validator",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "butschster",
-      "email": "butschster@gmail.com",
-      "role": "Developer"
-    }
-  ],
-  "require": {
-    "php": "^8.1",
-    "spiral/filters": "^3.0",
-    "spiral/boot": "^3.0",
-    "illuminate/validation": "^8.0|^9.0",
-    "symfony/psr-http-message-bridge": "^2.0",
-    "spiral/console": "^3.0"
-  },
-  "require-dev": {
-    "mockery/mockery": "^1.5",
-    "spiral/framework": "^3.0",
-    "phpunit/phpunit": "^9.5",
-    "spiral/testing": "^2.0",
-    "vimeo/psalm": "^4.9"
-  },
-  "autoload": {
-    "psr-4": {
-      "Spiral\\Validation\\Laravel\\": "src"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Spiral\\Validation\\Laravel\\Tests\\App\\": "tests/app",
-      "Spiral\\Validation\\Laravel\\Tests\\": "tests/src"
-    }
-  },
-  "scripts": {
-    "test": "vendor/bin/phpunit",
-    "psalm": "vendor/bin/psalm --config=psalm.xml ./src"
-  },
-  "config": {
-    "sort-packages": true,
-    "allow-plugins": {
-      "spiral/composer-publish-plugin": true
-    }
-  },
-  "extra": {
-    "spiral": {
-      "bootloaders": [
-        "Spiral\\Validation\\Laravel\\Bootloader\\LaravelBootloader"
-      ]
-    }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+    "name": "spiral-packages/laravel-validator",
+    "description": "This is my package laravel-validator",
+    "keywords": [
+        "spiral-packages",
+        "spiral",
+        "laravel-validator"
+    ],
+    "homepage": "https://github.com/spiral-packages/laravel-validator",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "butschster",
+            "email": "butschster@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "spiral/filters": "^3.0",
+        "spiral/validation": "^3.0",
+        "spiral/boot": "^3.0",
+        "illuminate/validation": "^8.0|^9.0",
+        "symfony/psr-http-message-bridge": "^2.0",
+        "spiral/console": "^3.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.5",
+        "spiral/framework": "3.0.x-dev",
+        "phpunit/phpunit": "^9.5",
+        "spiral/testing": "^2.0",
+        "vimeo/psalm": "^4.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Spiral\\Validation\\Laravel\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Spiral\\Validation\\Laravel\\Tests\\App\\": "tests/app",
+            "Spiral\\Validation\\Laravel\\Tests\\": "tests/src"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "psalm": "vendor/bin/psalm --config=psalm.xml ./src"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "spiral/composer-publish-plugin": true
+        }
+    },
+    "extra": {
+        "spiral": {
+            "bootloaders": [
+                "Spiral\\Validation\\Laravel\\Bootloader\\LaravelBootloader"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
