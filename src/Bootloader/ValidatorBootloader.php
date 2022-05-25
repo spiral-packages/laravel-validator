@@ -8,14 +8,21 @@ use Illuminate\Translation\ArrayLoader;
 use Illuminate\Translation\Translator;
 use Illuminate\Validation\Factory;
 use Spiral\Boot\Bootloader\Bootloader;
+use Spiral\Bootloader\I18nBootloader;
 use Spiral\Translator\TranslatorInterface;
+use Spiral\Validation\Bootloader\ValidationBootloader;
 use Spiral\Validation\Laravel\FilterDefinition;
 use Spiral\Validation\Laravel\LaravelValidation;
 use Spiral\Validation\ValidationInterface;
 use Spiral\Validation\ValidationProvider;
 
-class LaravelBootloader extends Bootloader
+class ValidatorBootloader extends Bootloader
 {
+    protected const DEPENDENCIES = [
+        ValidationBootloader::class,
+        I18nBootloader::class
+    ];
+
     protected const SINGLETONS = [
         LaravelValidation::class => [self::class, 'initValidation'],
     ];

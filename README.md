@@ -30,12 +30,108 @@ After package install you need to register bootloader from the package.
 ```php
 protected const LOAD = [
     // ...
-    \Spiral\Laravel\Bootloader\LaravelBootloader::class,
+    \Spiral\Validation\Laravel\Bootloader\ValidatorBootloader::class,
 ];
 ```
 
 > Note: if you are using [`spiral-packages/discoverer`](https://github.com/spiral-packages/discoverer),
 > you don't need to register bootloader by yourself.
+
+## Usage
+
+First of all, need to create a filter that will receive incoming data that will be validated by the validator.
+
+### Filter with attributes
+Create a filter class and extend it from the base filter class `Spiral\Filters\Filter`, add `Spiral\Filters\HasFilterDefinition` interface.
+Implement the `filterDefinition` method, which should return a `Spiral\Validation\Symfony\FilterDefinition` object with 
+validation rules.
+
+Example:
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Filters;
+
+use Spiral\Filters\Attribute\Input\Post;
+use Spiral\Filters\Filter;
+use Spiral\Filters\FilterDefinitionInterface;
+use Spiral\Filters\HasFilterDefinition;
+use Spiral\Validation\Laravel\FilterDefinition;
+
+final class CreatePostFilter extends Filter implements HasFilterDefinition
+{
+    #[Post]
+    public string $title;
+
+    #[Post]
+    public string $slug;
+
+    #[Post]
+    public int $sort;
+
+    public function filterDefinition(): FilterDefinitionInterface
+    {
+        return new FilterDefinition([
+            'title' => 'string|required|min:5',
+            'slug' => 'string|required|min:5',
+            'sort' => 'integer|required'
+        ]);
+    }
+}
+```
+
+### Filter with array mapping
+If you prefer to configure fields mapping in an array, you can define fields mapping in a `filterDefinition` method.
+
+Example:
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Filters;
+
+use Spiral\Filters\Attribute\Input\Post;
+use Spiral\Filters\Filter;
+use Spiral\Filters\FilterDefinitionInterface;
+use Spiral\Filters\HasFilterDefinition;
+use Spiral\Validation\Laravel\FilterDefinition;
+
+final class CreatePostFilter extends Filter implements HasFilterDefinition
+{
+    public function filterDefinition(): FilterDefinitionInterface
+    {
+        return new FilterDefinition(
+            [
+                'title' => 'string|required|min:5',
+                'slug' => 'string|required|min:5',
+                'sort' => 'integer|required'
+            ],
+            [
+                'title' => 'title',
+                'slug' => 'slug',
+                'sort' => 'sort'
+            ]
+        );
+    }
+}
+```
+
+### Using a Filter and getting validation errors
+
+Example:
+```php
+use App\Filters\CreatePostFilter;
+use Spiral\Filters\Exception\ValidationException;
+
+try {
+    $filter = $this->container->get(CreatePostFilter::class); 
+} catch (ValidationException $e) {
+    var_dump($e->errors); // Errors processing
+}
+```
 
 ## Testing
 

@@ -10,18 +10,18 @@ use Spiral\Filters\ShouldBeValidated;
 class FilterDefinition implements FilterDefinitionInterface, ShouldBeValidated
 {
     public function __construct(
-        private readonly array $rules,
-        private readonly array $schema = [],
+        private array $validationRules = [],
+        private array $mappingSchema = []
     ) {
     }
 
     public function mappingSchema(): array
     {
-        return $this->schema;
+        return $this->mappingSchema;
     }
 
     public function validationRules(): array
     {
-        return $this->rules;
+        return $this->validationRules;
     }
 }
