@@ -16,11 +16,13 @@ final class FilterWithArrayMapping extends Filter implements HasFilterDefinition
         return new FilterDefinition(
             [
                 'username' => 'string|required',
-                'email' => 'email|required'
+                'email' => 'email|required',
+                'image' => 'required|image'
             ],
             [
                 'username' => 'username',
-                'email' => 'email'
+                'email' => 'email',
+                'image' => 'symfony-file:image'
             ]
         );
     }

@@ -9,6 +9,7 @@ use Spiral\Boot\Environment;
 use Spiral\Boot\EnvironmentInterface;
 use Spiral\Bootloader\Security\FiltersBootloader;
 use Spiral\Core\Container;
+use Spiral\Http\Bootloader\DiactorosBootloader;
 use Spiral\Testing\TestableKernelInterface;
 use Spiral\Validation\Bootloader\ValidationBootloader;
 use Spiral\Validation\Laravel\Bootloader\ValidatorBootloader;
@@ -24,6 +25,7 @@ abstract class TestCase extends \Spiral\Testing\TestCase
     {
         return [
             AttributesBootloader::class,
+            DiactorosBootloader::class,
             FiltersBootloader::class,
             ValidationBootloader::class,
             ValidatorBootloader::class,

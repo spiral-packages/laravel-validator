@@ -8,10 +8,12 @@ use Illuminate\Translation\ArrayLoader;
 use Illuminate\Translation\Translator;
 use Illuminate\Validation\Factory;
 use Spiral\Boot\Bootloader\Bootloader;
+use Spiral\Bootloader\Http\HttpBootloader;
 use Spiral\Bootloader\I18nBootloader;
 use Spiral\Translator\TranslatorInterface;
 use Spiral\Validation\Bootloader\ValidationBootloader;
 use Spiral\Validation\Laravel\FilterDefinition;
+use Spiral\Validation\Laravel\Http\Request\FilesBag;
 use Spiral\Validation\Laravel\LaravelValidation;
 use Spiral\Validation\ValidationInterface;
 use Spiral\Validation\ValidationProvider;
@@ -26,6 +28,15 @@ class ValidatorBootloader extends Bootloader
     protected const SINGLETONS = [
         LaravelValidation::class => [self::class, 'initValidation'],
     ];
+
+    public function init(HttpBootloader $http): void
+    {
+        $http->addInputBag('symfonyFiles', [
+            'class'  => FilesBag::class,
+            'source' => 'getUploadedFiles',
+            'alias' => 'symfony-file'
+        ]);
+    }
 
     public function boot(ValidationProvider $provider): void
     {

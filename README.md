@@ -56,6 +56,8 @@ use Spiral\Filters\Filter;
 use Spiral\Filters\FilterDefinitionInterface;
 use Spiral\Filters\HasFilterDefinition;
 use Spiral\Validation\Laravel\FilterDefinition;
+use Spiral\Validation\Laravel\Attribute\Input\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 final class CreatePostFilter extends Filter implements HasFilterDefinition
 {
@@ -68,12 +70,16 @@ final class CreatePostFilter extends Filter implements HasFilterDefinition
     #[Post]
     public int $sort;
 
+    #[File]
+    public UploadedFile $image;
+
     public function filterDefinition(): FilterDefinitionInterface
     {
         return new FilterDefinition([
             'title' => 'string|required|min:5',
             'slug' => 'string|required|min:5',
-            'sort' => 'integer|required'
+            'sort' => 'integer|required',
+            'image' => 'required|image'
         ]);
     }
 }
@@ -104,12 +110,14 @@ final class CreatePostFilter extends Filter implements HasFilterDefinition
             [
                 'title' => 'string|required|min:5',
                 'slug' => 'string|required|min:5',
-                'sort' => 'integer|required'
+                'sort' => 'integer|required',
+                'image' => 'required|image'
             ],
             [
                 'title' => 'title',
                 'slug' => 'slug',
-                'sort' => 'sort'
+                'sort' => 'sort',
+                'image' => 'symfony-file:image'
             ]
         );
     }
