@@ -16,10 +16,10 @@ class LaravelValidator implements ValidatorInterface
     private array $data;
 
     public function __construct(
-        private Factory $factory,
-        mixed $data,
-        private array $rules,
-        private array $messages = []
+        private readonly Factory $factory,
+        array|FilterBag $data,
+        private readonly array $rules,
+        private readonly array $messages = []
     ) {
         if ($data instanceof FilterBag) {
             $data = $data->entity->toArray();
