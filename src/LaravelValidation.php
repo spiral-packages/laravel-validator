@@ -6,19 +6,22 @@ namespace Spiral\Validation\Laravel;
 
 use Illuminate\Contracts\Validation\Factory;
 use Spiral\Filters\Filter;
+use Spiral\Filters\FilterBag;
 use Spiral\Validation\ValidationInterface;
 use Spiral\Validation\ValidatorInterface;
 
 class LaravelValidation implements ValidationInterface
 {
     public function __construct(
-        private Factory $factory
+        private readonly Factory $factory
     ) {
     }
 
     public function validate(mixed $data, array $rules, mixed $context = null): ValidatorInterface
     {
-        if ($data instanceof Filter) {
+        if ($data instanceof FilterBag) {
+            $data = $data->entity->toArray();
+        } elseif ($data instanceof Filter) {
             $data = $data->getData();
         }
 
