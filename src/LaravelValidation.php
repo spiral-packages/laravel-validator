@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Spiral\Validation\Laravel;
 
 use Illuminate\Contracts\Validation\Factory;
-use Spiral\Filters\Filter;
-use Spiral\Filters\FilterBag;
+use Spiral\Filters\Model\Filter;
+use Spiral\Filters\Model\FilterBag;
 use Spiral\Validation\ValidationInterface;
 use Spiral\Validation\ValidatorInterface;
 
