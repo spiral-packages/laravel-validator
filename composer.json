@@ -27,7 +27,8 @@
     "require-dev": {
         "mockery/mockery": "^1.5",
         "spiral/framework": "3.0.x-dev",
-        "spiral/http": "^3.0",
+        "spiral/nyholm-bridge": "^1.2",
+        "spiral/attributes": "^2.8 || ^3.0",
         "phpunit/phpunit": "^9.5",
         "spiral/testing": "^2.0",
         "vimeo/psalm": "^4.9"

@@ -6,7 +6,7 @@ namespace Spiral\Validation\Laravel;
 
 use Illuminate\Contracts\Validation\Factory;
 use Illuminate\Contracts\Validation\Validator;
-use Spiral\Filters\FilterBag;
+use Spiral\Filters\Model\FilterBag;
 use Spiral\Validation\ValidatorInterface;
 
 class LaravelValidator implements ValidatorInterface
