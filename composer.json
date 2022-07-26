@@ -26,7 +26,7 @@
     },
     "require-dev": {
         "mockery/mockery": "^1.5",
-        "spiral/framework": "^3.0",
+        "spiral/framework": "3.0.x-dev",
         "spiral/http": "^3.0",
         "phpunit/phpunit": "^9.5",
         "spiral/testing": "^2.0",

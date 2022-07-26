@@ -50,9 +50,9 @@ declare(strict_types=1);
 namespace App\Filters;
 
 use Spiral\Filters\Attribute\Input\Post;
-use Spiral\Filters\Dto\Filter;
-use Spiral\Filters\Dto\FilterDefinitionInterface;
-use Spiral\Filters\Dto\HasFilterDefinition;
+use Spiral\Filters\Model\Filter;
+use Spiral\Filters\Model\FilterDefinitionInterface;
+use Spiral\Filters\Model\HasFilterDefinition;
 use Spiral\Validation\Laravel\FilterDefinition;
 use Spiral\Validation\Laravel\Attribute\Input\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -95,9 +95,9 @@ declare(strict_types=1);
 namespace App\Filters;
 
 use Spiral\Filters\Attribute\Input\Post;
-use Spiral\Filters\Dto\Filter;
-use Spiral\Filters\Dto\FilterDefinitionInterface;
-use Spiral\Filters\Dto\HasFilterDefinition;
+use Spiral\Filters\Model\Filter;
+use Spiral\Filters\Model\FilterDefinitionInterface;
+use Spiral\Filters\Model\HasFilterDefinition;
 use Spiral\Validation\Laravel\FilterDefinition;
 
 final class CreatePostFilter extends Filter implements HasFilterDefinition
