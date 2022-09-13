@@ -26,6 +26,7 @@
     },
     "require-dev": {
         "mockery/mockery": "^1.5",
+        "spiral/framework": "^3.0",
         "spiral/nyholm-bridge": "^1.2",
         "spiral/attributes": "^2.8 || ^3.0",
         "phpunit/phpunit": "^9.5",
