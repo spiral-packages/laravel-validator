@@ -8,6 +8,7 @@ use Spiral\Validation\Laravel\Tests\Functional\TestCase;
 use Spiral\Validation\Laravel\Bootloader\ValidatorBootloader;
 use Spiral\Validation\Laravel\FilterDefinition;
 use Spiral\Validation\Laravel\LaravelValidation;
+use Spiral\Validation\ValidationInterface;
 use Spiral\Validation\ValidationProviderInterface;
 
 final class ValidatorBootloaderTest extends TestCase
@@ -22,5 +23,6 @@ final class ValidatorBootloaderTest extends TestCase
         $provider = $this->getContainer()->get(ValidationProviderInterface::class);
 
         $this->assertInstanceOf(LaravelValidation::class, $provider->getValidation(FilterDefinition::class));
+        $this->assertContainerBoundAsSingleton(ValidationInterface::class, LaravelValidation::class);
     }
 }
