@@ -38,12 +38,13 @@ class ValidatorBootloader extends Bootloader
         ]);
     }
 
-    public function boot(ValidationProvider $provider): void
+    public function boot(ValidationProvider $provider, ValidationBootloader $validation): void
     {
         $provider->register(
             FilterDefinition::class,
             static fn(LaravelValidation $validation) => $validation
         );
+        $validation->setDefaultValidator(FilterDefinition::class);
     }
 
     private function initValidation(TranslatorInterface $translator): ValidationInterface
