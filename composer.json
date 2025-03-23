@@ -22,7 +22,7 @@
         "spiral/console": "^3.1",
         "spiral/filters": "^3.1",
         "spiral/validation": "^3.1",
-        "symfony/psr-http-message-bridge": "^2.0"
+        "symfony/psr-http-message-bridge": "^2.0|^6.4|^7.0"
     },
     "require-dev": {
         "mockery/mockery": "^1.5",
