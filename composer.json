@@ -17,21 +17,21 @@
     ],
     "require": {
         "php": "^8.1",
-        "spiral/filters": "^3.1",
-        "spiral/validation": "^3.1",
-        "spiral/boot": "^3.1",
-        "illuminate/validation": "^8.0|^9.0|^10.0",
-        "symfony/psr-http-message-bridge": "^2.0",
-        "spiral/console": "^3.1"
+        "illuminate/validation": "^8.0|^9.0|^10.0|^11.0|^12.0",
+        "spiral/boot": "^3.15",
+        "spiral/console": "^3.15",
+        "spiral/filters": "^3.15",
+        "spiral/validation": "^3.15",
+        "symfony/psr-http-message-bridge": "^2.0|^6.4|^7.0"
     },
     "require-dev": {
         "mockery/mockery": "^1.5",
-        "spiral/framework": "^3.1",
+        "spiral/framework": "^3.15",
         "spiral/nyholm-bridge": "^1.2",
         "spiral/attributes": "^2.8 || ^3.1",
         "phpunit/phpunit": "^9.5",
-        "spiral/testing": "^2.0",
-        "vimeo/psalm": "^4.9"
+        "spiral/testing": "^2.9",
+        "vimeo/psalm": "^6.9.4"
     },
     "autoload": {
         "psr-4": {
@@ -46,7 +46,8 @@
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "psalm": "vendor/bin/psalm --config=psalm.xml ./src"
+        "psalm": "psalm",
+        "psalm:baseline": "psalm --set-baseline=psalm-baseline.xml"
     },
     "config": {
         "sort-packages": true,

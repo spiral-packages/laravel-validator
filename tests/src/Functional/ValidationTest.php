@@ -8,6 +8,8 @@ use Nyholm\Psr7\UploadedFile;
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Spiral\Filters\Exception\ValidationException;
+use Spiral\Filters\Model\Filter;
+use Spiral\Testing\Attribute\TestScope;
 use Spiral\Validation\Laravel\Tests\App\Filters\CreatePostFilter;
 use Spiral\Validation\Laravel\Tests\App\Filters\FilterWithArrayMapping;
 use Spiral\Validation\Laravel\Tests\App\Filters\SimpleFilter;
@@ -15,7 +17,11 @@ use Symfony\Component\HttpFoundation\File\UploadedFile as SymfonyUploadedFile;
 
 final class ValidationTest extends TestCase
 {
-    /** @dataProvider requestsSuccessProvider */
+    /**
+     * @param class-string<Filter> $filterClass
+     * @dataProvider requestsSuccessProvider
+     */
+    #[TestScope(['http', 'http-request'])]
     public function testValidationSuccess(string $filterClass, array $data, bool $withFile = false): void
     {
         $this->getContainer()->bind(ServerRequestInterface::class, $this->createRequest($data, $withFile));
@@ -30,7 +36,11 @@ final class ValidationTest extends TestCase
         $this->assertSame($data, $filter);
     }
 
-    /** @dataProvider requestsErrorProvider */
+    /**
+     * @param class-string<Filter> $filterClass
+     * @dataProvider requestsErrorProvider
+     */
+    #[TestScope(['http', 'http-request'])]
     public function testValidationError(string $filterClass, array $data): void
     {
         $this->getContainer()->bind(ServerRequestInterface::class, $this->createRequest($data));
